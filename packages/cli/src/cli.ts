@@ -3,6 +3,7 @@ import { program } from "commander";
 import chalk from "chalk";
 import { initCommand } from "./commands/init.js";
 import { signalCommand } from "./commands/signal.js";
+import { maintenanceCommand } from "./commands/maintenance.js";
 
 const VERSION = "0.1.0";
 
@@ -35,5 +36,10 @@ program
   .description("Start a local WebSocket signaling server for development")
   .option("-p, --port <port>", "Port to listen on", "4000")
   .action(signalCommand);
+
+program
+  .command("maintenance <status>")
+  .description("Toggle maintenance mode for the signaling server (on/off)")
+  .action(maintenanceCommand);
 
 program.parse(process.argv);
