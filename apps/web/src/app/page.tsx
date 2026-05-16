@@ -140,25 +140,25 @@ export default function LandingPage() {
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-blue-50/30 rounded-full blur-[80px]" />
 
           {/* Structured Decorative Elements - Moved closer for framing */}
-          {/* Left Square - Improved: increased visibility with stronger shadow and slightly more opaque background */}
+          {/* Left Square - Improved: tilted oppositely (counter-clockwise) */}
           <motion.div
             animate={{
               y: [0, -12, 0],
               scale: [1, 1.05, 1],
-              rotate: [0, 8, 0],
+              rotate: [-12, -4, -12],
             }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[15%] left-[10%] w-24 h-24 bg-white/20 border border-blue-200/40 rounded-[2rem] backdrop-blur-[8px] hidden xl:block shadow-[0_12px_40px_rgba(59,130,246,0.12)]"
+            className="absolute top-[12%] left-[8%] w-32 h-32 bg-white/20 border border-blue-200/40 rounded-[2.5rem] backdrop-blur-[8px] hidden xl:block shadow-[0_12px_40px_rgba(59,130,246,0.12)] -rotate-12"
           />
 
-          {/* Right Tilted Square - Improved: glass effect, closer to CTA */}
+          {/* Right Tilted Square - Improved: tilted oppositely (clockwise) */}
           <motion.div
             animate={{
               y: [0, 12, 0],
-              rotate: [-12, -6, -12],
+              rotate: [12, 18, 12],
             }}
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute top-[40%] right-[8%] w-40 h-40 bg-white/10 border border-indigo-200/40 rounded-[2.5rem] backdrop-blur-[6px] -rotate-12 hidden xl:block shadow-[0_8px_32px_rgba(99,102,241,0.08)]"
+            className="absolute top-[38%] right-[6%] w-52 h-52 bg-white/10 border border-indigo-200/40 rounded-[3rem] backdrop-blur-[6px] rotate-12 hidden xl:block shadow-[0_8px_32px_rgba(99,102,241,0.08)]"
           />
         </div>
 
@@ -653,18 +653,18 @@ export default function LandingPage() {
             animate={{
               y: [0, -10, 0],
               scale: [1, 1.1, 1],
-              rotate: [0, -10, 0],
+              rotate: [8, 16, 8],
             }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-[18%] w-24 h-24 bg-white/15 border border-blue-200/30 rounded-[1.5rem] backdrop-blur-[6px] hidden md:block shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
+            className="absolute top-16 left-[15%] w-32 h-32 bg-white/15 border border-blue-200/30 rounded-[2rem] backdrop-blur-[6px] hidden md:block shadow-[0_8px_24px_rgba(0,0,0,0.06)] rotate-8"
           />
           <motion.div
             animate={{
               y: [0, 15, 0],
-              rotate: [-12, -18, -12],
+              rotate: [15, 22, 15],
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-20 right-[18%] w-44 h-44 bg-white/5 border border-gray-200/40 rounded-[3rem] backdrop-blur-[4px] -rotate-12 hidden md:block shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
+            className="absolute bottom-16 right-[15%] w-52 h-52 bg-white/5 border border-gray-200/40 rounded-[3.5rem] backdrop-blur-[4px] rotate-15 hidden md:block shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
           />
         </div>
 
