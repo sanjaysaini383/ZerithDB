@@ -151,14 +151,15 @@ export default function LandingPage() {
             className="absolute top-[15%] left-[10%] w-24 h-24 bg-gradient-to-br from-blue-400/20 via-blue-200/5 to-transparent border border-blue-200/30 rounded-[2rem] blur-[0.5px] backdrop-blur-[4px] hidden xl:block"
           />
 
-          {/* Right Tilted Square - Improved: glass effect, closer to CTA */}
+          {/* Right Tilted Square - Improved: glass effect, closer to CTA, matching left style */}
           <motion.div
             animate={{
               y: [0, 12, 0],
               rotate: [-12, -6, -12],
+              scale: [1, 1.05, 1],
             }}
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute top-[40%] right-[8%] w-40 h-40 bg-white/10 border border-indigo-200/40 rounded-[2.5rem] backdrop-blur-[6px] -rotate-12 hidden xl:block shadow-[0_8px_32px_rgba(99,102,241,0.08)]"
+            className="absolute top-[40%] right-[8%] w-24 h-24 bg-gradient-to-br from-blue-400/20 via-blue-200/5 to-transparent border border-blue-200/30 rounded-[2rem] blur-[0.5px] backdrop-blur-[4px] -rotate-12 hidden xl:block shadow-[0_8px_32px_rgba(99,102,241,0.08)]"
           />
         </div>
 
@@ -662,9 +663,10 @@ export default function LandingPage() {
             animate={{
               y: [0, 15, 0],
               rotate: [-12, -18, -12],
+              scale: [1, 1.1, 1],
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-20 right-[18%] w-44 h-44 bg-white/5 border border-gray-200/40 rounded-[3rem] backdrop-blur-[4px] -rotate-12 hidden md:block shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
+            className="absolute bottom-20 right-[18%] w-24 h-24 bg-gradient-to-tr from-blue-500/10 to-indigo-500/5 border border-blue-200/20 rounded-[1.5rem] blur-[0.5px] backdrop-blur-sm -rotate-12 hidden md:block shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
           />
         </div>
 
