@@ -194,8 +194,22 @@ export class CollectionClient<T extends Record<string, any> = Record<string, any
    * Count documents matching a filter.
    */
   async count(filter: QueryFilter<T> = {}): Promise<number> {
-    const docs = await this.find(filter);
-    return docs.length;
+    return wrapIDBOperation(
+      ErrorCode.DB_READ_FAILED,
+      `Failed to count documents in "${this.collectionName}"`,
+      async () => {
+        const compiledFilter = this.precompileRegexes(filter);
+        let total = 0;
+
+        await this.table.each((doc) => {
+          if (this.matchesFilter(doc, compiledFilter)) {
+            total++;
+          }
+        });
+
+        return total;
+      }
+    );
   }
 
   private applyUpdateSpec(doc: Document<T>, spec: UpdateSpec<T>, updatedAt: number): Document<T> {
@@ -249,14 +263,28 @@ export class CollectionClient<T extends Record<string, any> = Record<string, any
         return false;
       if ("$nin" in conditions && (conditions["$nin"] as unknown[]).includes(fieldValue))
         return false;
-      if ("$regex" in conditions) {
-        let re = conditions["$regex"];
-        if (typeof fieldValue !== "string") return false;
-        if (!(re instanceof RegExp)) {
-          re = new RegExp(re);
+      if ("$exists" in conditions) {
+        const exists = key in doc;
+
+        if (conditions.$exists !== exists) {
+          return false;
         }
-        re.lastIndex = 0;
-        if (!re.test(fieldValue)) return false;
+      }
+      if ("$regex" in conditions) {
+        if (typeof fieldValue !== "string") {
+          return false;
+        }
+
+        const regex =
+          conditions.$regex instanceof RegExp
+            ? conditions.$regex
+            : new RegExp(conditions.$regex);
+
+        regex.lastIndex = 0;
+
+        if (!regex.test(fieldValue)) {
+          return false;
+        }
       }
     }
     return true;
