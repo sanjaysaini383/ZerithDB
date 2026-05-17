@@ -269,3 +269,5 @@ Good places to start:
 Apache 2.0 — see [LICENSE](LICENSE).
 
 Built with ❤️ by the ZerithDB community.
+
+Contributor: YASHODHA (GSSoC 2026)
